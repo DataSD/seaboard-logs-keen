@@ -1,0 +1,36 @@
+{
+	"Records": [{
+		"eventVersion": "2.0",
+		"eventSource": "aws:s3",
+		"awsRegion": "us-east-1",
+		"eventTime": "2017-02-24T19:30:03.555Z",
+		"eventName": "ObjectCreated:Put",
+		"userIdentity": {
+			"principalId": "A1DTFI8LLD1L6"
+		},
+		"requestParameters": {
+			"sourceIPAddress": "156.29.37.32"
+		},
+		"responseElements": {
+			"x-amz-request-id": "BECBBCA4F2210AC7",
+			"x-amz-id-2": "Oqe7WQ1vjR7/gxOACLndWYKc0a1cw4xiiGwWfvFgs3WpgAKr/3HxeH8Sbxd0hKQl4ivqPEMydrk="
+		},
+		"s3": {
+			"s3SchemaVersion": "1.0",
+			"configurationId": "1bf7c0bd-2277-44c6-890e-86ff838ed4c1",
+			"bucket": {
+				"name": "datasd-test-log-bucket-1337",
+				"ownerIdentity": {
+					"principalId": "A1DTFI8LLD1L6"
+				},
+				"arn": "arn:aws:s3:::datasd-test-log-bucket-1337"
+			},
+			"object": {
+				"key": "2017-02-08-03-33-14-2273317998A360A7",
+				"size": 391,
+				"eTag": "afe1bbfe053a312e5cb2217dd31ebccd",
+				"sequencer": "0058B089BB79CD34A5"
+			}
+		}
+	}]
+}

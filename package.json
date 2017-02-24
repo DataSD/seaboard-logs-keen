@@ -1,0 +1,27 @@
+{
+  "name": "s3_to_keen_logs",
+  "version": "0.0.1",
+  "description": "",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "^2.19.0",
+    "https": "^1.0.0",
+    "keen-js": "^3.4.1",
+    "querystring": "^0.2.0",
+    "twilio": "^2.11.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrMaksimize/lambda-serverless-node-twilio-sample.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrmaksimize/lambda-serverless-node-twilio-sample/issues"
+  },
+  "homepage": "https://github.com/mrmaksimize/lambda-serverless-node-twilio-sample/issues"
+}
