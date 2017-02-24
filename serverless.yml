@@ -59,7 +59,7 @@ functions:
     handler: handler.send_logs
     events:
       - s3:
-          bucket: datasd-test-log-bucket-1337
+          bucket: datasd-logs-all
           event: s3:ObjectCreated:*
 
 #    The following are a few example events you can configure

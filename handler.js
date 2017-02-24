@@ -6,13 +6,6 @@ var Keen = require('keen-js');
 
 console.log("Version 0.1.0");
 
-var config = {
-         "keen_project_id": "example",
-         "keen_write_key": "example"
-}
-
-
-
 var s3 = new AWS.S3();
 
 var kClient = new Keen({
