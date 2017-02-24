@@ -1,0 +1,35 @@
+{
+	"Records": [{
+		"eventVersion": "2.0",
+		"eventSource": "aws:s3",
+		"awsRegion": "us-east-1",
+		"eventTime": "2017-02-24T21:51:54.674Z",
+		"eventName": "ObjectCreated:Copy",
+		"userIdentity": {
+			"principalId": "A1DTFI8LLD1L6"
+		},
+		"requestParameters": {
+			"sourceIPAddress": "156.29.37.32"
+		},
+		"responseElements": {
+			"x-amz-request-id": "9F7E020A3A864627",
+			"x-amz-id-2": "7op1a/TmSa+RBKTfbjQeqhe8uwCb45GGmw9QLn/QyM0Mlk1IgrptElk6nKKKbtRQ9rRxDOOksY8="
+		},
+		"s3": {
+			"s3SchemaVersion": "1.0",
+			"configurationId": "b8e535e4-d71f-40a4-8e5a-6abda80b5244",
+			"bucket": {
+				"name": "datasd-logs-all",
+				"ownerIdentity": {
+					"principalId": "A1DTFI8LLD1L6"
+				},
+				"arn": "arn:aws:s3:::datasd-logs-all"
+			},
+			"object": {
+				"key": "seshat/2017-02-08-03-27-49-C9EC49B8F444EA96",
+				"size": 924,
+				"sequencer": "0058B0AAFA68648E8F"
+			}
+		}
+	}]
+}
