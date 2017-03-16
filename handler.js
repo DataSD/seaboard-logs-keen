@@ -18,6 +18,7 @@ exports.send_logs = function(event, context) {
     for (var i = 0; i < event.Records.length; i++) {
         var srcBucket = event.Records[i].s3.bucket.name;
         var srcKey = unescape(event.Records[i].s3.object.key);
+        var activeEvent = event.Records[i];
 
         s3.getObject({ Bucket: srcBucket, Key: srcKey}, function(error, data) {
             if (error !== null) {
@@ -26,9 +27,15 @@ exports.send_logs = function(event, context) {
             } else {
                 console.log('parsing');
                 parsedLogs = parse(data.Body.toString());
+                parsedEvent = parseEvent(activeEvent);
                 for (var l = 0; l < parsedLogs.length; l++) {
-                    console.log(parsedLogs[l]);
-                    kClient.addEvent('s3log_events', parsedLogs[l], function(err, res) {
+                    var keenObject = {
+                        "log": parsedLogs[l],
+                        "eventMeta": parsedEvent
+                    }
+                    console.log(keenObject);
+                    var prefix = keenObject.eventMeta.eventObjectPrefix;
+                    kClient.addEvent('s3_' + prefix + '_logs', keenObject, function(err, res) {
                         context.done(err, res);
                     });
                 }
@@ -37,6 +44,22 @@ exports.send_logs = function(event, context) {
         });
     }
 };
+
+function parseEvent(activeEvent) {
+    var srcKey = unescape(activeEvent.s3.object.key);
+    srcPrefix = srcKey.split('/')[0];
+    eventObject = {
+        eventTime: activeEvent.eventTime,
+        eventName: activeEvent.eventName,
+        eventBucket: activeEvent.s3.bucket.name,
+        eventObjectKey: srcKey,
+        eventObjectPrefix: srcPrefix,
+        eventObjectSize: activeEvent.s3.object.size
+    };
+
+    return eventObject;
+
+}
 
 // Source https://github.com/ifit/s3-log-parser
 function parse(log) {
@@ -100,7 +123,7 @@ function parse(log) {
             "turn_around_time":      (turnAroundTime == '-' ? 0 : parseInt(turnAroundTime, 10)),
             "referer":               referrer,
             "user_agent":            userAgent,
-            "keen":                 { "timestamp": time }
+            "timestamp":             time
         }
 
         parsedLogs.push(event);
